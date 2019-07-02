@@ -3,28 +3,36 @@ import logo from './logo.svg';
 import './App.css';
 import {connect} from 'react-redux'
 import {Switch, Route, Link} from 'react-router-dom'
+import Login from './Containers/Login'
+import UserPage from './Containers/UserPage'
+import SignUp from './Containers/SignUp'
+import PromptContainer from './Containers/PromptContainer'
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>Testboo</h1>
+
+          <Link className="hey1" to="/">Home</Link>
+          <Link className="hey2" to="/login">Login</Link>
+        <Switch>
+          
+          <Route path='/login' render={(routerProps) => <Login {...routerProps}/>}/>
+          <Route path='/mypage' render={(routerProps)=> <UserPage {...routerProps}/>}/>
+          <Route path='/signup' render={(routerProps)=> <SignUp {...routerProps}/>}/>
+          <Route path='/promptme' render={(routerProps)=> <PromptContainer{...routerProps}/>}/>
+
+        </Switch>
       </header>
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {}
+}
+
+export default connect(mapStateToProps)(App);
 
 //this is a test

@@ -11,10 +11,14 @@ import {createStore, applyMiddleware, combineReducers, compose} from 'redux'
 import thunk from 'redux-thunk'
 import {Provider} from 'react-redux'
 //Reducer import here
+import userReducer from './Reducers/UserReducer'
+import PromptContainerReducer from './Reducers/PromptContainerReducer'
 
-let rootReducer = combineReducers({})
+let rootReducer = combineReducers({user: userReducer} ,{prompt_container: PromptContainerReducer })
 const composeEnhancers = window._REDUX_DEVTOOLS_EXTENSION_COMPOSE_ || compose;
-const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
+ const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
+
+//const store = createStore(rootReducer)
 
 
 
