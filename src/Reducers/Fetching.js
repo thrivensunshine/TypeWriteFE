@@ -1,3 +1,5 @@
+import underscore from 'underscore';
+
 export const fetchthings = () => {
   return (dispatch) => {
     fetch("http://localhost:3000/things")
@@ -49,12 +51,17 @@ export const sendTokenBackToPersist = (token) => {
 }
 
 export const fetchForPrompt = () => {
+
   return (dispatch) => {
     fetch("http://localhost:9393/prompts")
     .then(res => res.json())
     .then(prompt =>{
+      prompt.map(one=>{
+        console.log(one.phrase, "phrase in prompt map")
+      })
+      // console.log(_.pluck(prompt, prompt.phrase))
       console.log(prompt, "THIS IS MY PROMPT IN MY FETCH *********")
-  
+      // dispatch({type: "SAVE_PROMPT_TO_STATE", payload: prompt})
     })
   }
   }
