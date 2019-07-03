@@ -1,6 +1,6 @@
 let initialState = {
 
-    id:"",
+
     character:"",
     setting:"",
     emotion:"",
@@ -10,20 +10,21 @@ let initialState = {
 
 }
 
-const PromptContainerReducer = (state = initialState, action) => {
+const promptContainerReducer = (state = initialState, action) => {
   switch (action.type) {
 
-    case "SAVE_USER_TO_STATE":
-      let userObj = action.payload.user
+    case "SAVE_PROMPT_TO_STATE":
+      let promptObj = action.payload
+      console.log(promptObj[0].emotionSample, "PAYLOAD BITCHES")
       return {
         ...state,
-        id: userObj.id,
-        character: userObj.character,
+        // id: promptObj.id,
+        character: promptObj[0].characterSample,
 
-        setting: userObj.setting,
-        emotion: userObj.emotion,
-        phrase: userObj.phrase,
-        genre: userObj.genre
+        setting: promptObj[0].settingSample,
+        emotion: promptObj[0].emotionSample,
+        phrase: promptObj[0].phraseSample,
+        genre: promptObj[0].genreSample
       }
 
     default:
@@ -31,4 +32,4 @@ const PromptContainerReducer = (state = initialState, action) => {
   }
 }
 
-export default PromptContainerReducer
+export default promptContainerReducer

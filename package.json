@@ -11,7 +11,8 @@
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
     "semantic-ui-react": "^0.87.2",
-    "underscore": "^1.9.1"
+    "underscore": "^1.9.1",
+    "lodash": "^3.10.0"
   },
   "scripts": {
     "start": "react-scripts start",

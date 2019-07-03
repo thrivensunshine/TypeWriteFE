@@ -1,16 +1,8 @@
 import underscore from 'underscore';
+var _ = require('lodash')
 
-export const fetchthings = () => {
-  return (dispatch) => {
-    fetch("http://localhost:3000/things")
-    .then(res => res.json())
-    .then(things => dispatch(savethingsToState(things)))
-  }
-}
 
-export const savethingsToState = (things) => {
-  return {type: "SAVE_thingS_TO_STATE", payload: things}
-}
+
 
 export const loginFetch = (loginInformation={}) => {
   return (dispatch) => {
@@ -24,7 +16,7 @@ export const loginFetch = (loginInformation={}) => {
     })
     .then(res => res.json())
     .then((response) => {
-      console.log(response, "RESPONSE IN FETCH")
+      // console.log(response, "RESPONSE IN FETCH")
       if (!response.error) {
         localStorage.setItem("token", response.jwt)
         dispatch({type: "SAVE_USER_TO_STATE", payload: response})
@@ -50,18 +42,42 @@ export const sendTokenBackToPersist = (token) => {
   }
 }
 
-export const fetchForPrompt = () => {
+export const fetchForPrompt = (promptInfo={}) => {
 
   return (dispatch) => {
     fetch("http://localhost:9393/prompts")
     .then(res => res.json())
     .then(prompt =>{
-      prompt.map(one=>{
-        console.log(one.phrase, "phrase in prompt map")
-      })
-      // console.log(_.pluck(prompt, prompt.phrase))
-      console.log(prompt, "THIS IS MY PROMPT IN MY FETCH *********")
-      // dispatch({type: "SAVE_PROMPT_TO_STATE", payload: prompt})
+      // const promptsRando = [
+      const phrasePluck = _.pluck(prompt,'phrase')
+      const phraseSample = _.sample(phrasePluck)
+
+      const settingPluck = _.pluck(prompt,'setting')
+      const settingSample = _.sample(settingPluck)
+
+      const emotionPluck = _.pluck(prompt,'emotion')
+      const emotionSample = _.sample(emotionPluck)
+
+      const characterPluck = _.pluck(prompt,'character')
+      const characterSample = _.sample(characterPluck)
+
+      const genrePluck = _.pluck(prompt,'genre')
+      const genreSample = _.sample(genrePluck)
+
+      const topicPluck = _.pluck(prompt,'topic')
+      const topicSample = _.sample(topicPluck)
+      const promptsRando = [{phraseSample,settingSample, emotionSample, characterSample, genreSample, topicSample}]
+      // promptsRando.push(phraseSample,settingSample, emotionSample, characterSample, genreSample, topicSample)
+
+      // console.log(promptsRando, "SAMPLE")
+
+
+        dispatch({type: "SAVE_PROMPT_TO_STATE", payload: promptsRando})
+
+
+
+      // console.log(prompt, "THIS IS MY PROMPT IN MY FETCH *********")
+
     })
   }
   }
