@@ -8,7 +8,18 @@ import UserPage from './Containers/UserPage'
 import SignUp from './Containers/SignUp'
 import PromptContainer from './Containers/PromptContainer'
 
-function App() {
+import {fetchTokenPersit} from './Reducers/Fetching'
+
+
+
+class App extends React.Component{
+
+  componentDidMount() {
+    if (localStorage.getItem("token")) {
+      this.props.fetchTokenPersit(localStorage.getItem("token"))
+    }
+  }
+render(){
   return (
     <div className="App">
       <header className="App-header">
@@ -16,8 +27,9 @@ function App() {
 
           <Link className="hey1" to="/">Home</Link>
           <Link className="hey2" to="/login">Login</Link>
+          <Link className="hey3" to="/mypage">Mah Stuff</Link>
         <Switch>
-          
+
           <Route path='/login' render={(routerProps) => <Login {...routerProps}/>}/>
           <Route path='/mypage' render={(routerProps)=> <UserPage {...routerProps}/>}/>
           <Route path='/signup' render={(routerProps)=> <SignUp {...routerProps}/>}/>
@@ -28,11 +40,11 @@ function App() {
     </div>
   );
 }
-
+}
 const mapStateToProps = (state) => {
   return {}
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, {fetchTokenPersit})(App);
 
 //this is a test

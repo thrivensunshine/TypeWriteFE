@@ -1,6 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux'
 import { Link } from 'react-router-dom'
+import PieceCard from '../Components/PieceCard'
+
 
 const  UserPage= (props) => (
 
@@ -12,7 +14,7 @@ const  UserPage= (props) => (
   <p>You have written:</p>
   {props.pieces.map(piece =>{
     console.log(piece, "ITS A PIECE")
-    return <p> {piece} </p>
+    return < PieceCard piece={piece} />
   })}
   <button>
 <Link to="/promptme">PROMPT ME</Link>

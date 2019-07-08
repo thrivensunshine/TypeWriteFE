@@ -33,6 +33,12 @@
   top: 0;
   left: 100px
 }
+
+.hey3 {
+  position: absolute;
+  top: 0;
+  left: 200px
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

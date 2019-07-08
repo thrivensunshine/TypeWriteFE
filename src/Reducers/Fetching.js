@@ -25,9 +25,7 @@ export const loginFetch = (loginInformation={}) => {
   }
 }
 
-
-
-export const sendTokenBackToPersist = (token) => {
+export const fetchTokenPersit = (token) => {
   return (dispatch) => {
     fetch("http://localhost:3000/persist", {
       method: "GET",
@@ -82,7 +80,34 @@ export const fetchForPrompt = (promptInfo={}) => {
   }
   }
 
+export const fetchPostPiece = (theId, dBody, dCharacter, dEmotion, dGenre, dPhrase, dSetting) => {
+  return (dispatch) => {
+  fetch(`http://localhost:9393/pieces`, {
+    method: 'POST',
+    headers: {
+      "Content-type":"application/json",
+      "Accepts":"application/json",
+      "Authorization": localStorage.token
+    },
+    body: JSON.stringify({
+      body:dBody,
+      user_id: theId,
+      character: dCharacter,
+      emotion: dEmotion,
+      genre: dGenre,
+      phrase: dPhrase,
+      setting: dSetting
 
+    })
+  })
+  .then(res => res.json())
+  .then(response =>{
+    dispatch({type: "SAVE_PIECE_TO_DB", payload: theId, dBody, dCharacter, dEmotion, dGenre, dPhrase, dSetting})
+console.log(response, "RESPPPOONNNSE")
+
+  })
+}
+}
 // export const fetchthingIDToBackend = (id) => {
 //   return (dispatch, getState) => {
 //     const applicationState = getState()
