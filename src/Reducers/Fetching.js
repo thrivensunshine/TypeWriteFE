@@ -108,6 +108,13 @@ console.log(response, "RESPPPOONNNSE")
   })
 }
 }
+
+export const handleClick = () => {
+  console.log("hi hi hih hi")
+  return(dispatch) => {
+dispatch({type: "PRIVATE_OR_NAH"})
+}}
+
 // export const fetchthingIDToBackend = (id) => {
 //   return (dispatch, getState) => {
 //     const applicationState = getState()

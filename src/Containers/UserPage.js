@@ -14,7 +14,7 @@ const  UserPage= (props) => (
   <p>You have written:</p>
   {props.pieces.map(piece =>{
     console.log(piece, "ITS A PIECE")
-    return < PieceCard piece={piece} />
+    return < PieceCard key={piece.id} piece={piece} />
   })}
   <button>
 <Link to="/promptme">PROMPT ME</Link>
@@ -29,7 +29,7 @@ const mapStateToProps = (state) => {
   return {username: state.user.username, name:state.user.name, pieces: state.user.pieces, avatar: state.user.avatar, pieces:state.user.pieces.map(one => one.body)}
 }
 
-export default connect(mapStateToProps)(UserPage);
+export default connect(mapStateToProps)(UserPage, PieceCard);
 
 
 // import React, { Component } from 'react';

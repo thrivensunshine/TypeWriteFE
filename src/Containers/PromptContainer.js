@@ -59,7 +59,7 @@ class PromptContainer extends Component {
     <br/>
       <textarea name="bodybaby" style={{resize:"none", height:600
     , width:800}}  placeholder="write somethin" onChange={this.handleChange}>
-></textarea>
+</textarea>
   <br/>
     <input type="submit" />
     </form>

@@ -19,6 +19,7 @@ class App extends React.Component{
       this.props.fetchTokenPersit(localStorage.getItem("token"))
     }
   }
+
 render(){
   return (
     <div className="App">

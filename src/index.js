@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+//style
+import "bootstrap/dist/css/bootstrap.min.css";
 
 //Router
 import {BrowserRouter} from 'react-router-dom'
@@ -14,8 +16,9 @@ import {Provider} from 'react-redux'
 //Reducer import here
 import userReducer from './Reducers/UserReducer'
 import PromptContainerReducer from './Reducers/PromptContainerReducer'
+import PieceCardReducer from './Reducers/PieceCardReducer'
 
-let rootReducer = combineReducers({user: userReducer ,promptContainer: PromptContainerReducer })
+let rootReducer = combineReducers({user: userReducer ,promptContainer: PromptContainerReducer, PieceCardReducer:PieceCardReducer })
 const composeEnhancers = window._REDUX_DEVTOOLS_EXTENSION_COMPOSE_ || compose;
  const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
 
