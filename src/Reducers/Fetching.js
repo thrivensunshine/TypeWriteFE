@@ -47,7 +47,7 @@ export const fetchForPrompt = (promptInfo={}) => {
     .then(res => res.json())
     .then(prompt =>{
       // const promptsRando = [
-      const phrasePluck = _.pluck(prompt,'phrase')
+      const phrasePluck = _.map(prompt,'phrase')
       const phraseSample = _.sample(phrasePluck)
 
       const settingPluck = _.pluck(prompt,'setting')

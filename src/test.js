@@ -48,3 +48,7 @@
     ]
   }
 }
+
+
+"build:css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
+"watch:css": "npm run build:css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive"
