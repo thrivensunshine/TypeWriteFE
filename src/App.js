@@ -24,11 +24,22 @@ render(){
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Testboo</h1>
+        <div className="navBar">
+        <div className="navTitle">PROMPTLY</div>
+        <div className="hey1">
 
-          <Link className="hey1" to="/">Home</Link>
-          <Link className="hey2" to="/login">Login</Link>
-          <Link className="hey3" to="/mypage">Mah Stuff</Link>
+
+
+          <Link className="loginfromhome" to="/signup">Home</Link>
+          </div>
+          <div className="hey2">
+          <Link className="loginfromhome" to="/login">Login</Link>
+          </div>
+          <div className="hey3">
+          <Link className="loginfromhome" to="/mypage">My Page</Link>
+          </div>
+          </div>
+
         <Switch>
 
           <Route path='/login' render={(routerProps) => <Login {...routerProps}/>}/>

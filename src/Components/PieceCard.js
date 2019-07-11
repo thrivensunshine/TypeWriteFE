@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import {handleClick} from '../Reducers/Fetching'
-
+import {deletePiece} from '../Reducers/Fetching'
 
 class PieceCard extends Component {
 
@@ -14,21 +14,35 @@ class PieceCard extends Component {
   render() {
     console.log(this.props, "<PROPS in PieceCard")
     return (
-      <div>
-        {this.props.piece}
-        <br/>
-          <button>edit</button>
-          <button>favorite</button>
-          <button>delete</button>
-            <div className="radio">
 
-      <div>Favorite
-      <input class="star" type="checkbox" title="bookmark page"></input>
-      </div>
-      <div>
-        <button onClick={this.props.handleClick
-          }>{this.props.privateBut}</button>
-      </div>
+      <div className="wholecard">
+
+        <div className="yourprompt">
+
+        your prompts<br/>
+      phrase: {this.props.phrase}
+      <br/>
+        emotion: {this.props.emotion}
+        </div>
+        <br/>
+          <div>
+          <input class="star" type="checkbox" title="bookmark page"></input>
+          </div>
+          <div>
+            <button onClick={this.props.handleClick
+            } className="privatebutton">{this.props.privateBut}</button>
+          <br/>
+          </div>
+          {this.props.piece}
+          <br/>
+      <div className="userbuttons">
+          <button className="littlebutton">edit</button>
+          <button className="littlebutton" onClick={(pId)=>{
+
+              this.props.deletePiece(this.props.pId)}}>delete</button>
+            <div className="radio">
+              </div>
+
 
   </div>
 
@@ -41,7 +55,7 @@ class PieceCard extends Component {
 const mapStateToProps = (state) => {
   console.log(state, "I AM STATE IN PIECE CARD")
 
-  return { id:state.user.id, private: state.PieceCardReducer.private, privateBut: state.PieceCardReducer.privateBut }
+  return { id:state.user.id, private: state.PieceCardReducer.private, privateBut: state.PieceCardReducer.privateBut, pieceId:state.use, }
 }
 
-export default connect(mapStateToProps, {handleClick})(PieceCard)
+export default connect(mapStateToProps, {handleClick,deletePiece})(PieceCard)

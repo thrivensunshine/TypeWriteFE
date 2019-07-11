@@ -29,6 +29,16 @@ const userReducer = (state = initialState, action) => {
         bio: userObj.bio
       }
 
+    case "REMOVE_PIECE":
+    let numId = action.payload
+    let pieceIndex = state.pieces.map(x=>{ return x.id}).indexOf(numId)
+
+    let newState = state.pieces.splice(pieceIndex)
+    console.log(state.pieces)
+    return{
+      ...state,
+      pieces: newState
+    }
     default:
       return state;
   }

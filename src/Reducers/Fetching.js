@@ -47,23 +47,23 @@ export const fetchForPrompt = (promptInfo={}) => {
     .then(res => res.json())
     .then(prompt =>{
       // const promptsRando = [
-      const phrasePluck = _.map(prompt,'phrase')
-      const phraseSample = _.sample(phrasePluck)
+      const phrasemap = _.map(prompt,'phrase')
+      const phraseSample = _.sample(phrasemap)
 
-      const settingPluck = _.pluck(prompt,'setting')
-      const settingSample = _.sample(settingPluck)
+      const settingmap = _.map(prompt,'setting')
+      const settingSample = _.sample(settingmap)
 
-      const emotionPluck = _.pluck(prompt,'emotion')
-      const emotionSample = _.sample(emotionPluck)
+      const emotionmap = _.map(prompt,'emotion')
+      const emotionSample = _.sample(emotionmap)
 
-      const characterPluck = _.pluck(prompt,'character')
-      const characterSample = _.sample(characterPluck)
+      const charactermap = _.map(prompt,'character')
+      const characterSample = _.sample(charactermap)
 
-      const genrePluck = _.pluck(prompt,'genre')
-      const genreSample = _.sample(genrePluck)
+      const genremap = _.map(prompt,'genre')
+      const genreSample = _.sample(genremap)
 
-      const topicPluck = _.pluck(prompt,'topic')
-      const topicSample = _.sample(topicPluck)
+      const topicmap = _.map(prompt,'topic')
+      const topicSample = _.sample(topicmap)
       const promptsRando = [{phraseSample,settingSample, emotionSample, characterSample, genreSample, topicSample}]
       // promptsRando.push(phraseSample,settingSample, emotionSample, characterSample, genreSample, topicSample)
 
@@ -109,11 +109,27 @@ console.log(response, "RESPPPOONNNSE")
 }
 }
 
+export const fetchDeletePiece = (id) =>{
+    fetch(`http://localhost:9393/pieces/${id}`,{
+      method: 'delete'
+    })
+}
+
+
 export const handleClick = () => {
   console.log("hi hi hih hi")
   return(dispatch) => {
 dispatch({type: "PRIVATE_OR_NAH"})
 }}
+
+export const deletePiece = (id) => {
+    console.log("THIS IS DELETE HANDLER", id)
+fetchDeletePiece(id)
+return(dispatch)=>{
+  dispatch({type:"REMOVE_PIECE", payload: id})
+ }
+
+}
 
 // export const fetchthingIDToBackend = (id) => {
 //   return (dispatch, getState) => {
