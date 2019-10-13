@@ -39,6 +39,8 @@ const userReducer = (state = initialState, action) => {
       ...state,
       pieces: newState
     }
+
+
     default:
       return state;
   }

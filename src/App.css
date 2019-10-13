@@ -301,7 +301,7 @@ input[type=submit] :active {
 .userprofile{
   position: fixed;
   left: 6%;
-  top: 20%;
+  top: 15%;
   height: 1000px;
 }
 
@@ -375,4 +375,9 @@ input[type=submit] :active {
   box-shadow: 2px 2px 2px 2px #747373;
 
   border-radius: 4px;
+}
+
+
+.aaa{
+  text-align: left;
 }

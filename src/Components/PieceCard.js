@@ -20,9 +20,12 @@ class PieceCard extends Component {
         <div className="yourprompt">
 
         your prompts<br/>
+      <div className="aaa">
+
       phrase: {this.props.phrase}
       <br/>
-        emotion: {this.props.emotion}
+      emotion: {this.props.emotion}
+        </div>
         </div>
         <br/>
           <div>

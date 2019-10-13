@@ -54,7 +54,7 @@ class PromptContainer extends Component {
         <div>phrase:{this.props.phrase}<br/> emotion:{this.props.emotion}{}</div>
       <form onSubmit={this.handleSubmit}>
 
-      <button type="checkbox" onClick={this.handleThis} >Promptme!</button>
+      <button type="checkbox" className="littlebutton" onClick={this.handleThis} >Promptme!</button>
 
     <br/>
       <textarea name="bodybaby" style={{resize:"none", height:600
